@@ -45,12 +45,14 @@ THE SOFTWARE.
 #include "flower_right.h"
 #include "flower_upper.h"
 #include "flower_lower.h"
-int texturePicker;
+
 int t = 0;
 int r = 0;
+int texturePicker;
+vector<unsigned int> textures;
 float xValue = -.15004f;
-float yValue = 0.8f;
-float zValue = -2.2f;
+float yValue = -1.17f;
+float zValue = -1.2f;
 /* FUNCTIONS */
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -62,7 +64,6 @@ void GetDesktopResolution(float& horizontal, float& vertical);
 /* FUNCTIONS */
 
 /* VARIABLES */
-vector<unsigned int> textures;
 glm::vec3 viewPos;
 double viewX, viewZ;
 GLuint  VBO, VAO = 0;
@@ -126,8 +127,6 @@ int main()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-
-
     /* SHADERS */
 
     Shader lightingShader("simpleVS.vs", "simpleFS.fs");
@@ -183,46 +182,7 @@ int main()
         -0.5f, -1.5f, -0.5f, 	0.0f, 1.0f
     };
 
-    float boxVertices[] = {
-
-
-        -0.5f, -2.5f, -0.5f,    0.0f, 0.0f,
-        0.5f, -2.5f, -0.5f, 	1.0f, 0.0f,   // top 
-        0.5f, -1.5f, -0.5f, 	1.0f, 1.0f,
-        0.5f, -1.5f, -0.5f, 	1.0f, 1.0f,
-        -0.5f, -1.5f, -0.5f, 	0.0f, 1.0f,
-        -0.5f, -2.5f, -0.5f, 	0.0f, 0.0f,
-
-        -0.5f, -1.5f, 0.5f, 	1.0f, 0.0f,
-        -0.5f, -1.5f, -0.5f, 	1.0f, 1.0f,
-        -0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,
-        -0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,  // left
-        -0.5f, -2.5f, 0.5f, 	0.0f, 0.0f,
-        -0.5f, -1.5f, 0.5f, 	1.0f, 0.0f,
-
-        0.5f, -1.5f, 0.5f, 		1.0f, 0.0f,
-        0.5f, -1.5f, -0.5f, 	1.0f, 1.0f,
-        0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,
-        0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,  // right
-        0.5f, -2.5f, 0.5f, 	    0.0f, 0.0f,
-        0.5f, -1.5f, 0.5f, 		1.0f, 0.0f,
-
-        -0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,
-        0.5f, -2.5f, -0.5f, 	1.0f, 1.0f,
-        0.5f, -2.5f, 0.5f, 	    1.0f, 0.0f,
-        0.5f, -2.5f, 0.5f, 	    1.0f, 0.0f,
-        -0.5f, -2.5f, 0.5f, 	0.0f, 0.0f,  // back 
-        -0.5f, -2.5f, -0.5f, 	0.0f, 1.0f,
-
-        -0.5f, -1.5f, -0.5f, 	0.0f, 1.0f,
-        0.5f, -1.5f, -0.5f, 	1.0f, 1.0f,
-        0.5f, -1.5f, 0.5f, 		1.0f, 0.0f,
-        0.5f, -1.5f, 0.5f, 		1.0f, 0.0f,
-        -0.5f, -1.5f, 0.5f, 	0.0f, 0.0f, // front
-        -0.5f, -1.5f, -0.5f, 	0.0f, 1.0f
-
-
-    };
+  
     float pyrVertices[] = {
         // positions              // texture coords
          -0.5f, -0.5f, .5f,     0.0f, 0.0f,
@@ -304,8 +264,8 @@ int main()
 
     };
     glm::vec3 lightPositions[] = {
-        glm::vec3(-3.0f, -1.0f, 3.0f),
-        glm::vec3(-3.0f, -1.0f, -3.0f),
+        glm::vec3(-3.0f, 0.0f, 3.0f),
+        glm::vec3(-3.0f, 0.0f, -3.0f),
         glm::vec3(3.0f, 0.0f, 3.0f),
         glm::vec3(3.0f, 0.0f, -3.0f),
         glm::vec3(0.0f, 4.0f, 0.0f),
@@ -328,16 +288,7 @@ int main()
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 
-    unsigned int boxVAO, boxVBO;
-    glGenVertexArrays(1, &boxVAO);
-    glGenBuffers(1, &boxVBO);
-    glBindVertexArray(boxVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, boxVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(boxVertices), &boxVertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+
 
     unsigned int pyrVAO, pyrVBO;
     glGenVertexArrays(1, &pyrVAO);
@@ -387,34 +338,18 @@ int main()
     /*  LIGHT CUBE */
 
     /* TEXTURES */
-    unsigned int ufoTexture = loadTexture("resources/textures/burst.png");
-    unsigned int flowerTexture2 = loadTexture("resources/textures/myheiro.png");
-    unsigned int flowerTexture1 = loadTexture("resources/textures/AdobeStock_416624854.jpeg");
-    unsigned int flowerTexture = loadTexture("resources/textures/AdobeStock_408749181.jpeg");
-    unsigned int skyboxTexture = loadTexture("resources/textures/AdobeStock_172317258.jpeg");
-    unsigned int cubeTexture = loadTexture("resources/textures/box.png");
-    unsigned int planeTexture = loadTexture("resources/textures/1.png");
-    unsigned int planeTexture1 = loadTexture("resources/textures/AdobeStock_252775020.jpeg");
-    unsigned int planeTexture2 = loadTexture("resources/textures/viktorsaznov deepspace.jpeg");
-    unsigned int planeTexture3 = loadTexture("resources/textures/AdobeStock_481965458.jpeg");
-    unsigned int planeTexture4 = loadTexture("resources/textures/background5.jpg");
-    unsigned int planeTexture5 = loadTexture("resources/textures/AdobeStock_293211764.jpeg");
-
+    unsigned int ufoTexture = loadTexture("resources/textures/1.png");
+    unsigned int pyrTexture = loadTexture("resources/textures/2.png");
+    unsigned int skyboxTexture = loadTexture("resources/textures/3.png");
+    unsigned int cubeTexture = loadTexture("resources/textures/4.png");
+    unsigned int planeTexture = loadTexture("resources/textures/5.png");
 
     textures.push_back(ufoTexture);
-    textures.push_back(flowerTexture);
-    textures.push_back(flowerTexture1);
-    textures.push_back(flowerTexture2);
+    textures.push_back(pyrTexture);
+    textures.push_back(cubeTexture);
+    textures.push_back(planeTexture);
     textures.push_back(skyboxTexture);
-    textures.push_back(planeTexture);
-    textures.push_back(planeTexture);
-    textures.push_back(planeTexture1);
-    textures.push_back(planeTexture2);
-    textures.push_back(planeTexture3);
-    textures.push_back(planeTexture4);
-    textures.push_back(planeTexture5);
 
-    
     vector<std::string> faces
     {
         "resources/textures/right.jpg", // right 
@@ -452,135 +387,38 @@ int main()
         glm::mat4 projection, view, model;
         /* SET PROJECTION
         /****************************************************************/
-        if (onPerspective)
-            projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        if (!onPerspective)
-            projection = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, 1.0f, 100.0f);
+
+        projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
 
         view = camera.GetViewMatrix();
         lightingShader.use();
         lightingShader.setMat4("projection", projection);
         lightingShader.setMat4("view", view);
         lightingShader.setMat4("model", model);
-
-        /* RENDER SCENE */
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, cubeTexture);
-        
-        /* GENERATE COLORS */
-        double  timeValue = glfwGetTime();
-        float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-        float blueValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-        float redValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-        if (redValue < .5)
-            redValue = .5;
-        if (blueValue < .5)
-            blueValue = .5;
-        if (greenValue < .5)
-            greenValue = .5;
-        lightingShader.setInt("spriteColor", 3);
-        int vertexColorLocation = glGetUniformLocation(lightingShader.ID, "color");
-        
-        /* CUTOUT BOX */
-        glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("spriteColor", color);     
-        glBindVertexArray(boxVAO);
-        model = glm::mat4(1.0f);
-        model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.01f, 0.01f, 0.01f));
-        model = glm::translate(model, glm::vec3(0.0f, 16.155, -3.240f));
-        model = glm::scale(model, glm::vec3(8.0f, 7.0f , 8.0f));
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, textures[t]);
-        lightingShader.setMat4("model", model);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
        
-        glBindVertexArray(cubeVAO);
-        for (int i = 0; i <= 1; i++)
-        {
-            if (i == 0)
-            {   /* PLANE */
-                model = glm::mat4(1.0f);
-                model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.01f, 0.01f, 0.01f));
-               // model = glm::translate(model, glm::vec3(0.0f, -1.255, -3.25));
-                model = glm::translate(model, glm::vec3(.00496f, -1.26f, -3.32f));
-                model = glm::scale(model, glm::vec3(8.0f, .04f, 8.0f));
-                lightingShader.setMat4("model", model);
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, planeTexture);
-                lightingShader.setMat4("model", model);
-                glDrawArrays(GL_TRIANGLES, 0, 36);
-            }
-            if (i == 1)
-            { /* FLOWER POT*/
-                model = glm::mat4(1.0f);
-                model = glm::rotate(model, glm::radians(240.0f), glm::vec3(0.01f, 0.01f, 0.01f));
-                model = glm::translate(model, glm::vec3(-2.0f, 1.5f, -1.0f));
-                model = glm::scale(model, glm::vec3(.75f, .75f, .65f));
-                lightingShader.setMat4("model", model);
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, cubeTexture);
-                lightingShader.setMat4("model", model);
-                glDrawArrays(GL_TRIANGLES, 0, 36);
-            }
-        }
+      
+
         /* PYRAMIDS */
         glBindVertexArray(pyrVAO);
         float angle = 240.0;
         model = glm::mat4(1.0f);
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.01f, 0.01f, 0.01f));
         model = glm::scale(model, glm::vec3(1.75f, 1.75f, 2.25f));
-        for (unsigned int i = 0; i < 2; i++)
-        {
-            if (i == 0)
-                model = glm::translate(model, glm::vec3(-2.0f, -1.0f, -1.1f));
-            if (i == 1)
-                model = glm::translate(model, glm::vec3(0.0f, 2.0f, 0.0f));
-            lightingShader.setMat4("model", model);
-            // use the already bound cube texture
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-
-        // use flowr texture on the following objects
-        
+        lightingShader.setMat4("model", model);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textures[r]);
-        //color = glm::vec4(redValue, 0.0f, blueValue, 1.0f);
-        //lightingShader.setVec3("spriteColor", color);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        glBindVertexArray(cubeVAO);
         model = glm::mat4(1.0f);
-        for (int i = 0; i <= 7; i++)
-        {
-            model = glm::mat4(1.0f);
-            model = glm::rotate(model, glm::radians(51.42857f * i), glm::vec3(0.0f, 0.0f, 1.0f));
-            model = glm::translate(model, glm::vec3(-0.00504, -0.124999, -2.04));
-            model = glm::scale(model, glm::vec3(.5f, .5f, .5f));
-            lightingShader.setMat4("model", model);
-            Petal petal;
-            petal.Draw();
-        }
-
-        model = glm::translate(model, glm::vec3(-.00040014, -2.70001, .00000102147f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(xValue, yValue, zValue));
+        model = glm::scale(model, glm::vec3(1.75f, 1.75f, 2.25f));
         lightingShader.setMat4("model", model);
-        FlowerStem flowerStem;
-        flowerStem.Draw();
-       
-        model = glm::translate(model, glm::vec3(0.0f, .395, .0550006));
-        lightingShader.setMat4("model", model);
-        FlowerLeaf flowerLeaf;
-        flowerLeaf.Draw(); 
-
-        model = glm::translate(model, glm::vec3(.0000400014, -0.15f, -0.200001f));
-        lightingShader.setMat4("model", model);
-        Sphere sphere;
-        sphere.Draw();
-
-
-        //color = glm::vec4(0.0f, 0.0f, blueValue, 1.0f);
-        //lightingShader.setVec3("spriteColor", color);
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, ufoTexture);
-        lightingShader.setMat4("model", model);
-        Ufo ufo;
-        ufo.Draw();
+        glBindTexture(GL_TEXTURE_2D, textures[t]);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
 
         /* RENDER LIGHTS */
         glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
@@ -591,6 +429,7 @@ int main()
         float direction = -1.0;
         for (unsigned int i = 0; i < 2; i++)
         {
+
             if (i == 1)
             { /* PINK LIGHTS */
                 pinkShader.use();
@@ -630,54 +469,16 @@ int main()
         glDrawArrays(GL_TRIANGLES, 0, 72);
         glBindVertexArray(0);
         glDepthFunc(GL_LESS);
-    
-
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
     /* SWAP BUFFERS AND DELETE VAOS FROM MEMORY */
-    Petal petal;
-    petal.~Petal();
-    FlowerLeaf flowerLeaf;
-    flowerLeaf.~FlowerLeaf();
-    FlowerStem flowerStem;
-    flowerStem.~FlowerStem();
-    Ufo ufo;
-    ufo.~Ufo();
-    Sphere sphere;
-    sphere.~Sphere();
-
     glDeleteVertexArrays(1, &skyboxVAO);
     glDeleteBuffers(1, &skyboxVBO);
     glDeleteVertexArrays(1, &lightCubeVAO);
     glDeleteBuffers(1, &lightCubeVBO);
-    glDeleteVertexArrays(1, &cubeVAO);
-    glDeleteBuffers(1, &cubeVBO);
-    glDeleteVertexArrays(1, &boxVAO);
-    glDeleteBuffers(1, &boxVBO);
-    glDeleteVertexArrays(1, &pyrVAO);
-    glDeleteBuffers(1, &pyrVBO);
-
-    glDeleteTextures(1, &flowerTexture);
-    glDeleteTextures(1, &flowerTexture2);
-    glDeleteTextures(1, &flowerTexture1);
-    glDeleteTextures(1, &planeTexture);
-    glDeleteTextures(1, &planeTexture1);
-    glDeleteTextures(1, &planeTexture2);
-    glDeleteTextures(1, &planeTexture3);
-    glDeleteTextures(1, &planeTexture4);
-    glDeleteTextures(1, &planeTexture5);
-    glDeleteTextures(1, &cubemap3Texture);
-    glDeleteTextures(1, &ufoTexture);
-    glDeleteTextures(1, &cubeTexture);
-
-    glDeleteShader(lightingShader.ID);
-    glDeleteShader(greenShader.ID);
-    glDeleteShader(purpleShader.ID);
-    glDeleteShader(skyboxShader.ID);
-    glDeleteShader(pinkShader.ID);
-
 
     glfwTerminate();
     return 0;
@@ -696,10 +497,6 @@ void processInput(GLFWwindow* window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
-    if ((glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS))
-        onPerspective = false;
-    if ((glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS))
-        onPerspective = true;
     if ((glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS))
         xValue -= .05;
     if ((glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS))
@@ -713,30 +510,21 @@ void processInput(GLFWwindow* window)
     if ((glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS))
         zValue += .05;
     if ((glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS))
-        std::cout << "( " << xValue << "f, " << yValue << "f, " << zValue << "f)" << std::endl;
+        std::cout << "xvalue: " << xValue << ", yValue: " << yValue << " zValue: " << zValue << std::endl;
     if ((glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS))
     {
-        if (t < textures.size() -1)
-        {
+        if (t < textures.size() - 1)
             t += 1;
-            texturePicker = textures[t];
-        }
-        else 
+        else
             t = 0;
-
     }
     if ((glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS))
     {
-        if (r < textures.size() -1)
-        {
-            r += 1;
-            texturePicker = textures[r];
-        }
+        if (r < textures.size() - 1)
+            r += 1;     
         else
             r = 0;
-
     }
-    
 }
 
 /* CALLBACKS */
