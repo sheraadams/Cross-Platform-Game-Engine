@@ -32,7 +32,6 @@ THE SOFTWARE.
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <math.h>
-#include "petal.h"
 #include "filesystem.h"
 #include "shader.h"
 #include "camera.h"
