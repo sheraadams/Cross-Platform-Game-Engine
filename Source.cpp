@@ -37,14 +37,7 @@ THE SOFTWARE.
 #include "shader.h"
 #include "camera.h"
 #include "model.h"
-#include "ufo.h"
-#include "flower_stem.h"
-#include "flower_leaf.h"
-#include "sphere.h"
-#include "flower_left.h"
-#include "flower_right.h"
-#include "flower_upper.h"
-#include "flower_lower.h"
+
 
 int t = 0;
 int r = 0;
