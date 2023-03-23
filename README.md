@@ -2,7 +2,7 @@
 
 Example of drawing multiple shapes in openGL. Controls are added to allow visual customization for development. 
 
-Up, down, left, right moves an object that is defined in terms of (x, Y, Z).
+Up, down, left, right moves an object that is defined in terms of (xValue, yValue, and zValue).
 T and R change the textures vector index with a key press to allow visual texture scrolling. 
 
 ## Key Controls
