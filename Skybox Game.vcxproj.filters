@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{a15d10a6-3f55-4987-902d-9399dc1487c7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="skybox.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="skybox.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="TextShader.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="TextShader.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="light_purple.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="post_processing.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="post_processing.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="build_windows.sh">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="assimp-vc140-mt.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GLAD.pdb">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="STB_IMAGE.pdb">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="light_pink.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="light_green.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="glsl.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="simpleFS.fs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="simpleVS.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="color_changing.fs">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="root_directory.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filesystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="petal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_leaf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_left.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_lower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_right.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_stem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\flower_upper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ROCKET SKYBOX\ufo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
