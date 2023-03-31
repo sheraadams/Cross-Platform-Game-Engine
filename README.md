@@ -5,6 +5,25 @@ Example of drawing multiple shapes in openGL. Controls are added to allow visual
 Up, down, left, right moves an object that is defined in terms of (xValue, yValue, and zValue).
 T and R change the textures vector index with a key press to allow visual texture scrolling. 
 
+## Texture Scrolling
+for texture scrolling add: 
+
+glBindTexture(GL_TEXTURE_2D, textures[t]);
+
+and 
+
+glBindTexture(GL_TEXTURE_2D, textures[r]);
+
+## Object Translation Control
+
+model = glm::translate(model, glm::vec3(x, y, z));
+
+## Size Control
+        
+model = glm::scale(model, glm::vec3(xx + 1, yy + 1, zz + 1));
+
+** note you need to keep the x, y, and z values not equal to zero to render them.
+
 ## Key Controls
 
 Up: move object up .05f
