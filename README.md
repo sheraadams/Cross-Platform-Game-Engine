@@ -1,16 +1,34 @@
-## About
+## About 
 
-Example of drawing multiple shapes in openGL. Controls are added to allow visual customization for development. 
+This is an example of drawing multiple shapes in openGL. Controls are added to allow visual customization for development so that objects can be translated and scaled with a key input. Textures can be switched with a key press through the use of a textures vector. 
 
 Up, down, left, right moves an object that is defined in terms of (xValue, yValue, and zValue).
 T and R change the textures vector index with a key press to allow visual texture scrolling. 
 
+## Variables
+int t = 0;
+
+int r = 0;
+
+vector<unsigned int> textures;
+        
+float xValue = -.15004f;
+        
+float yValue = -0.17f;
+        
+float zValue = -0.2f;
+        
+float xx = 0;
+        
+float yy = 0;
+        
+float zz = 0;
+
 ## Texture Scrolling
-for texture scrolling add: 
 
 glBindTexture(GL_TEXTURE_2D, textures[t]);
 
-and 
+and / or
 
 glBindTexture(GL_TEXTURE_2D, textures[r]);
 
