@@ -131,7 +131,7 @@ model = glm::scale(model, glm::vec3(xx + 1, yy + 1, zz + 1));
 ```
 ** note you should keep the x, y, and z values not equal to zero to render them as size 0 cannot exist. 
 
-## Sumary of the Key Controls
+## Summary of the Key Controls
 
 **Up**: move object up .05f
 
