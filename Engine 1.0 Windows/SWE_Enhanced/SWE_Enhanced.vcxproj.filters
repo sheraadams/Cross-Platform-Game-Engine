@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{3f1d196d-8fba-4377-91ea-ec420bd74ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{e9b1445f-bb6d-4cb4-9160-262ffc51f218}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="objects.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pen_accent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pen_body.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pen_point.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_vec3d.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="irrKlang.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="objects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui.ini">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="specular.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="specular.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="light_purple.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="light_pink.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="glsl.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="skybox.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="skybox.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="text_shader.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="text_shader.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ikpMP3.dll">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="irrKlang.dll">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

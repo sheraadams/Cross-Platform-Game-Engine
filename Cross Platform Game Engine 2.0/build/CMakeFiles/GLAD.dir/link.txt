@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGLAD.a CMakeFiles/GLAD.dir/src/glad.c.o CMakeFiles/GLAD.dir/includes/imgui/backends/imgui_impl_glfw.cpp.o
+/usr/bin/ranlib libGLAD.a
