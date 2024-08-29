@@ -6,7 +6,6 @@
 #include "stb_image.h"
 #include"texture.h"
 
-
 Textures::Textures()
 {
 }
@@ -28,9 +27,11 @@ unsigned int Textures::loadTexture(char const* path)
             format = GL_RGB;
         else if (nrComponents == 4)
             format = GL_RGBA;
+        
         // make texture non-repeating
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        
         // bind texture
         glBindTexture(GL_TEXTURE_2D, textureID);
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
@@ -48,6 +49,7 @@ unsigned int Textures::loadTexture(char const* path)
     }
     return textureID;
 }
+
 // Images are loaded with Y axis going down, the function flips them
 void Textures::flipImageHorizontally(unsigned char* image, int width, int height, int channels)
 {
@@ -66,6 +68,7 @@ void Textures::flipImageHorizontally(unsigned char* image, int width, int height
         }
     }
 }
+
 void Textures::flipImageVertically(unsigned char* image, int width, int height, int channels)
 {
     for (int j = 0; j < height / 2; ++j)
@@ -83,6 +86,7 @@ void Textures::flipImageVertically(unsigned char* image, int width, int height, 
         }
     }
 }
+
 bool Textures::createRepeatTexture(const char* filename, GLuint& textureId)
 {
     int width, height, channels;
@@ -98,6 +102,7 @@ bool Textures::createRepeatTexture(const char* filename, GLuint& textureId)
         // set texture filtering parameters
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        
         if (channels == 3)
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
         else if (channels == 4)
@@ -116,16 +121,19 @@ bool Textures::createRepeatTexture(const char* filename, GLuint& textureId)
     // Error loading the image
     return false;
 }
+
 void Textures::destroyTexture(GLuint textureId)
 {
     glGenTextures(1, &textureId);
 }
+
 unsigned int Textures::loadCubemap(std::vector<std::string> faces)
 {
     unsigned int textureID;
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
     int width, height, nrChannels;
+   
     for (unsigned int i = 0; i < faces.size(); i++)
     {
         unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
@@ -140,6 +148,7 @@ unsigned int Textures::loadCubemap(std::vector<std::string> faces)
             stbi_image_free(data);
         }
     }
+    
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
